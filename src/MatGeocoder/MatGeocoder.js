@@ -129,60 +129,24 @@ class MatGeocoder extends React.Component<Props, State> {
 
   renderInput = (inputProps) => {
     const {classes, ref, ...other} = inputProps;
-    const {showLoader, inputPaperProps} = this.props;
     return (
       <React.Fragment>
-        <DebouncedProgressBar show={this.state.loading && showLoader} />
-        <Paper
-          square={false}
-          elevation={1}
-          className={classes.inputContainer}
-          {...inputPaperProps}
-        >
-          <Grid container alignItems="center" spacing={8} wrap="nowrap">
-            <Grid
-              item
-              xs
-              className={classNames(classes.grow, classes.noShrink)}
-            >
-              <TextField
-                variant="outlined"
-                fullWidth
-                InputProps={{
-                  inputRef: ref,
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon color="action" />
-                    </InputAdornment>
-                  ),
-                  classes: {
-                    input: classes.input
-                  },
-                  ...other
-                }}
-              />
-            </Grid>
-            {/* Unmount and mount releases space for TexField to grow AND show animation. */}
-            <Fade
-              in={this.state.value.length > 0}
-              unmountOnExit={true}
-              mountOnEnter={true}
-            >
-              <Grid
-                item
-                xs
-                className={classNames(classes.shrink, classes.noGrow)}
-              >
-                <IconButton
-                  aria-label="Clear Search Input"
-                  onClick={this.handleClearInput}
-                >
-                  <CancelIcon />
-                </IconButton>
-              </Grid>
-            </Fade>
-          </Grid>
-        </Paper>
+        <TextField
+          variant="outlined"
+          fullWidth
+          InputProps={{
+            inputRef: ref,
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="action" />
+              </InputAdornment>
+            ),
+            classes: {
+              input: classes.input
+            },
+            ...other
+          }}
+        />
       </React.Fragment>
     );
   };
