@@ -146,6 +146,7 @@ class MatGeocoder extends React.Component<Props, State> {
               className={classNames(classes.grow, classes.noShrink)}
             >
               <TextField
+                variant="outlined"
                 fullWidth
                 InputProps={{
                   inputRef: ref,
